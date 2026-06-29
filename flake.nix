@@ -15,7 +15,8 @@
         "x86_64-linux"
       ];
       forAllSystems =
-        f: nixpkgs.lib.genAttrs supportedSystems (
+        f:
+        nixpkgs.lib.genAttrs supportedSystems (
           system:
           f {
             inherit system;
