@@ -1,0 +1,25 @@
+name: Set up Nix
+description: Install Nix with flakes and optionally connect to Cachix
+
+inputs:
+  cachix-name:
+    description: Cachix cache name (optional)
+    required: false
+    default: ""
+  cachix-auth-token:
+    description: Cachix auth token secret (optional)
+    required: false
+    default: ""
+
+runs:
+  using: composite
+  steps:
+    - name: Install Nix
+      uses: DeterminateSystems/determinate-nix-action@v3
+
+    - name: Set up Cachix
+      if: inputs.cachix-name != '' && inputs.cachix-auth-token != ''
+      uses: cachix/cachix-action@v16
+      with:
+        name: ${{ inputs.cachix-name }}
+        authToken: ${{ inputs.cachix-auth-token }}
