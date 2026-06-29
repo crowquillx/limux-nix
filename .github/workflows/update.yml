@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Nix
         uses: ./.github/actions/nix-setup
@@ -24,7 +24,7 @@ jobs:
           cachix-auth-token: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
       - name: Update limux package
-        uses: winapps-org/nix-update-action@v1.3.0
+        uses: winapps-org/nix-update-action@v1.4.0
         with:
           packages: limux
           pr-title: "chore: update limux to latest upstream release"
