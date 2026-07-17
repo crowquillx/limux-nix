@@ -19,7 +19,7 @@ runs:
 
     - name: Set up Cachix
       if: inputs.cachix-name != '' && inputs.cachix-auth-token != ''
-      uses: cachix/cachix-action@v16
+      uses: cachix/cachix-action@v17
       with:
         name: ${{ inputs.cachix-name }}
         authToken: ${{ inputs.cachix-auth-token }}
